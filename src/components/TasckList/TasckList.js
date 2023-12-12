@@ -1,4 +1,5 @@
 // import { statusFilter } from '../../redux/constants';
+import { getStatusFilter, getTasks } from '../../redux/selectors';
 import { Task } from '../../components/Tasck/Tasck';
 import css from './TasckForm.modul.css';
 import { useSelector } from 'react-redux';
@@ -14,8 +15,8 @@ const getVisibleTasks = (tasks, statusFilter) => {
   }
 };
 export const TaskList = () => {
-  const tasks = useSelector(state => state.tasks);
-  const statusFilter = useSelector(state => state.filters.status);
+  const tasks = useSelector(getTasks);
+  const statusFilter = useSelector(getStatusFilter);
   const visibleTask = getVisibleTasks(tasks, statusFilter);
   return (
     <ul className={css.list}>
